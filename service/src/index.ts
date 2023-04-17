@@ -73,19 +73,19 @@ router.post('/verify', async (req, res) => {
     if (!token)
       throw new Error('Secret key is empty')
 
-		// const AUTH_SECRET_KEY = getSecretKeyList();
-		// let hasAuth = false;
-		// for (const key of AUTH_SECRET_KEY) {
-		// 	if (key === token) {
-		// 		hasAuth = true;
-		// 		break;
-		// 	}
-		// }
-		//
-    // if (!hasAuth)
-    //   throw new Error('密钥无效 | Secret key is invalid')
-		if (process.env.AUTH_SECRET_KEY !== token)
-			throw new Error('密钥无效 | Secret key is invalid')
+		const AUTH_SECRET_KEY = getSecretKeyList();
+		let hasAuth = false;
+		for (const key of AUTH_SECRET_KEY) {
+			if (key === token) {
+				hasAuth = true;
+				break;
+			}
+		}
+
+    if (!hasAuth)
+      throw new Error('密钥无效 | Secret key is invalid')
+		// if (process.env.AUTH_SECRET_KEY !== token)
+		// 	throw new Error('密钥无效 | Secret key is invalid')
 
     res.send({ status: 'Success', message: 'Verify successfully', data: null })
   }
