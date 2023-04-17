@@ -17,3 +17,7 @@ export function isBoolean<T extends boolean>(value: T | unknown): value is boole
 export function isFunction<T extends (...args: any[]) => any | void | never>(value: T | unknown): value is T {
   return Object.prototype.toString.call(value) === '[object Function]'
 }
+
+export function getSecretKeyList(): Array<string> {
+ return ['h8ofomvs5f','plnb0bnmya','x6bd0wf5jf','89c6y5inlf','cgt9ma2jck','5lssgg3ax8','dslikiix68','ybiioy7k59','eg2eykynhw','root'];
+}
